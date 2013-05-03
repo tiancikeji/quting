@@ -3,7 +3,7 @@ gem 'rails', '3.2.13'
 gem 'sqlite3'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  # gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
 gem "quiet_assets", :group => [:development]
@@ -20,3 +20,4 @@ gem "therubyracer", ">= 0.10.2", :group => :assets, :platform => :ruby
 gem "devise", ">= 2.1.2"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
+gem "thin"
