@@ -1,4 +1,7 @@
 Quting::Application.routes.draw do
+  resources :mfiles
+
+
   resources :media
 
 

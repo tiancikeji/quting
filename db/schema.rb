@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506034914) do
+ActiveRecord::Schema.define(:version => 20130506071102) do
 
   create_table "media", :force => true do |t|
     t.string   "url"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(:version => 20130506034914) do
     t.string   "category"
     t.string   "updatetime"
     t.string   "description"
+  end
+
+  create_table "mfiles", :force => true do |t|
+    t.integer  "medium_id"
+    t.string   "time"
+    t.string   "url"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|

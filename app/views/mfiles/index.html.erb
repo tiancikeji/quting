@@ -1,0 +1,29 @@
+<h1>Listing mfiles</h1>
+
+<table>
+  <tr>
+    <th>Media</th>
+    <th>Time</th>
+    <th>Url</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mfiles.each do |mfile| %>
+  <tr>
+    <td><%= mfile.medium_id %></td>
+    <td><%= mfile.time %></td>
+    <td><%= mfile.url %></td>
+    <td><%= mfile.name %></td>
+    <td><%= link_to 'Show', mfile %></td>
+    <td><%= link_to 'Edit', edit_mfile_path(mfile) %></td>
+    <td><%= link_to 'Destroy', mfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mfile', new_mfile_path %>

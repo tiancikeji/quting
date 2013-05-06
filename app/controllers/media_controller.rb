@@ -25,7 +25,7 @@ class MediaController < ApplicationController
   # GET /media/new.json
   def new
     @medium = Medium.new
-
+    5.times { @medium.mfiles.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @medium }

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Media:</b>
+  <%= @mfile.medium_id %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @mfile.time %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @mfile.url %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @mfile.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_mfile_path(@mfile) %> |
+<%= link_to 'Back', mfiles_path %>

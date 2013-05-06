@@ -49,6 +49,20 @@
     <%= f.label :mtype %><br />
     <%= f.text_field :mtype %>
   </div>
+  <hr />
+  <h3>files</h3>
+  <div>
+     <%= f.fields_for :mfiles  do |file| %>
+       <div class="field">
+         <%= file.label :name %><br />
+         <%= file.text_field :name  %>  
+       </div>
+       <div class="field">
+         <%= file.label :url %><br />
+         <%= file.text_field :url  %>  
+       </div>
+     <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
