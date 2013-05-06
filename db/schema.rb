@@ -11,13 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506025822) do
+ActiveRecord::Schema.define(:version => 20130506034914) do
 
   create_table "media", :force => true do |t|
     t.string   "url"
     t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "name"
+    t.string   "author"
+    t.string   "yanbo"
+    t.string   "jishu"
+    t.string   "time"
+    t.string   "category"
+    t.string   "updatetime"
+    t.string   "description"
   end
 
   create_table "roles", :force => true do |t|

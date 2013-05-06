@@ -1,7 +1,15 @@
 <h1>Listing media</h1>
 
-<table>
+<table class="table">
   <tr>
+    <th>name</th>
+    <th>author</th>
+    <th>yanbo</th>
+    <th>jishu</th>
+    <th>time</th>
+    <th>category</th>
+    <th>updatetime</th>
+    <th>description</th>
     <th>Url</th>
     <th>Type</th>
     <th></th>
@@ -11,6 +19,14 @@
 
 <% @media.each do |medium| %>
   <tr>
+    <td><%= medium.name %></td>
+    <td><%= medium.author %></td>
+    <td><%= medium.yanbo %></td>
+    <td><%= medium.jishu %></td>
+    <td><%= medium.time %></td>
+    <td><%= medium.category %></td>
+    <td><%= medium.updatetime %></td>
+    <td><%= medium.description %></td>
     <td><%= medium.url %></td>
     <td><%= medium.type %></td>
     <td><%= link_to 'Show', medium %></td>
