@@ -1,4 +1,7 @@
 Quting::Application.routes.draw do
+  resources :media
+
+
   authenticated :user do
     root :to => 'home#index'
   end
