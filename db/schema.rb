@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20130506034914) do
 
   create_table "media", :force => true do |t|
     t.string   "url"
-    t.string   "type"
+    t.string   "mtype"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "name"
