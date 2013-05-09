@@ -2,8 +2,7 @@ class MediaController < ApplicationController
   # GET /media
   # GET /media.json
   def index
-    @media = Medium.all
-
+    @media = Medium.page params[:page]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @media }

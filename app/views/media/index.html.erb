@@ -1,41 +1,34 @@
-<h1>Listing media</h1>
-
-<table class="table">
-  <tr>
-    <th>name</th>
-    <th>author</th>
-    <th>yanbo</th>
-    <th>jishu</th>
-    <th>time</th>
-    <th>category</th>
-    <th>updatetime</th>
-    <th>description</th>
-    <th>Url</th>
-    <th>Type</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @media.each do |medium| %>
-  <tr>
-    <td><%= medium.name %></td>
-    <td><%= medium.author %></td>
-    <td><%= medium.yanbo %></td>
-    <td><%= medium.jishu %></td>
-    <td><%= medium.time %></td>
-    <td><%= medium.category %></td>
-    <td><%= medium.updatetime %></td>
-    <td><%= medium.description %></td>
-    <td><%= medium.url %></td>
-    <td><%= medium.mtype %></td>
-    <td><%= link_to 'Show', medium %></td>
-    <td><%= link_to 'Edit', edit_medium_path(medium) %></td>
-    <td><%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
 <%= link_to 'New Medium', new_medium_path %>
+<% @media.each do |medium| %>
+  <div class="span4">
+  <h3><%= medium.name %></h3>
+  <p><%= medium.author %></p>
+  <p><%= medium.yanbo %></p>
+  <p><%= medium.jishu %></p>
+  <p><%= medium.time %></p>
+  <p><%= medium.category %></p>
+  <p><%= medium.updatetime %></p>
+  <p><%= medium.description %></p>
+  <p><%= medium.url %></p>
+  <p><%= medium.mtype %></p>
+  <p>
+  <%= link_to 'Show', medium %>
+  <%= link_to 'Edit', edit_medium_path(medium) %>
+  <%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+</div>
+<div class="span4">
+  <% medium.mfiles.each do |mfile| %>
+    <p>
+      <%= mfile.name %>
+      <%= mfile.time %>
+      <%= mfile.url %>
+      <%= link_to 'Show', mfile %>
+      <%= link_to 'Edit', edit_mfile_path(mfile) %>
+      <%= link_to 'Destroy', mfile, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+</div>
+<% end %>
+<%= paginate @media %>
+
