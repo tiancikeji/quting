@@ -7,8 +7,8 @@ BASE_URL = "http://www.huaxiazi.com"
 INDEX_URL = "#{BASE_URL}"
 Productinfo_URL = "#{BASE_URL}/productinfo.aspx?id="
 
-# n = 10
-# while n > 0 do
+n = 10
+while n > 0 do
   doc = Nokogiri::HTML(open(Productinfo_URL+"42863"))
   doc.xpath('//a[@href]').each do |link|
     href = link['href']
@@ -23,7 +23,6 @@ Productinfo_URL = "#{BASE_URL}/productinfo.aspx?id="
       end
     end
   end
-  
-  # n=n-1
-# end
+  n=n-1
+end
 
