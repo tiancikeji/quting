@@ -1,6 +1,7 @@
 <%= link_to 'New Medium', new_medium_path %>
 <% @media.each do |medium| %>
-  <div class="span4">
+  <div class="row">
+  <p><img src="<%= medium.mtype %>" alt="" /></p>
   <h3><%= medium.name %></h3>
   <p><%= medium.author %></p>
   <p><%= medium.yanbo %></p>
@@ -9,18 +10,17 @@
   <p><%= medium.category %></p>
   <p><%= medium.updatetime %></p>
   <p><%= medium.description %></p>
-  <p><%= medium.url %></p>
-  <p><%= medium.mtype %></p>
+  <p><a href="<%= medium.url %>">orginal</a></p>
   <p>
   <%= link_to 'Show', medium %>
   <%= link_to 'Edit', edit_medium_path(medium) %>
   <%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
 </div>
-<div class="span4">
+<div class="row">
   <% medium.mfiles.each do |mfile| %>
     <p>
-      <%= mfile.name %>
+      <%= raw mfile.name %>
       <%= mfile.time %>
       <%= mfile.url %>
       <%= link_to 'Show', mfile %>
