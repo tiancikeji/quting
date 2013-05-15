@@ -14,9 +14,9 @@ namespace :medium do
     INDEX_URL = "#{BASE_URL}"
     Productinfo_URL = "#{BASE_URL}/productinfo.aspx?id="
     p BASE_URL
-    # n = 10
-    # while n > 0 do
-      url = Productinfo_URL+"42863"
+    n = 1000
+    while n > 0 do
+      url = Productinfo_URL+n.to_s
       doc = Nokogiri::HTML(open(url))
       # save media
       media = Medium.new
@@ -46,11 +46,18 @@ namespace :medium do
             mfile.url = i.xpath("Url").children.text
             # p mfile
             mfile.save
+            savepath = "public/mp3/"+mfile.name+"-"+mfile.id.to_s+".mp3"
+            File.open(savepath, "wb") do |saved_file|
+              open(URI::encode(mfile.url), 'rb') do |read_file|
+                saved_file.write(read_file.read)
+              end
+            end
+            Mfile.update(mfile.id,:url => savepath)
           end
         end
       end
-      # n=n-1
-    # end
+      n=n-1
+    end
 
   end
 end
