@@ -2,7 +2,6 @@ require 'rubygems'
 require 'nokogiri'
 require 'httparty'
 require 'open-uri'
-require 'iconv'
 
 
 namespace :medium do
@@ -46,7 +45,8 @@ namespace :medium do
             mfile.url = i.xpath("Url").children.text
             # p mfile
             mfile.save
-            savepath = "public/mp3/"+mfile.name+"-"+mfile.id.to_s+".mp3"
+	    Dir.mkdir("public/mp3/"+mfile.id.to_s,0755)
+            savepath = "public/mp3/"+mfile.id.to_s+"/"+mfile.name+".mp3"
             File.open(savepath, "wb") do |saved_file|
               open(URI::encode(mfile.url), 'rb') do |read_file|
                 saved_file.write(read_file.read)
