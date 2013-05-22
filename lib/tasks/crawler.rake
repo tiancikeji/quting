@@ -15,9 +15,10 @@ namespace :medium do
     Productinfo_URL = "#{BASE_URL}/productinfo.aspx?id="
     total_page = 488
     total_page.times do |page|
-      p page
+      p '================================'+(page+1).to_s+'========================================'
+      p  PAGE_URL
       @result = HTTParty.post(PAGE_URL, 
-                              :body => { :page => page, 
+                              :body => { :page => page+2, 
                                          :ClassId => '1', 
                                          :Orderid => '1', 
                                          :Series => '0', 
@@ -73,7 +74,7 @@ namespace :medium do
             id =  id.split("=")[1].split("&")[0]
 
             xml = Nokogiri::XML(open("http://huaxiazi.com/ajax/GetPlayInfo.aspx?PAID="+id))
-              xml.xpath("//root/NowPlay").map do |i|
+            xml.xpath("//root/NowPlay").map do |i|
               #save files
               mfile = Mfile.new
               mfile.medium_id = media.id
@@ -82,14 +83,14 @@ namespace :medium do
               mfile.url = i.xpath("Url").children.text
               mfile.save
 
-              Dir.mkdir("public/mp3/"+mfile.id.to_s,0755)
-              savepath = "public/mp3/"+mfile.id.to_s+"/"+mfile.name+".mp3"
-              File.open(savepath, "wb") do |saved_file|
-              open(URI::encode(mfile.url), 'rb') do |read_file|
-                  saved_file.write(read_file.read)
-                 end
-              end
-              mfile = Mfile.update(mfile.id,:url => savepath)
+              # Dir.mkdir("public/mp3/"+mfile.id.to_s,0755)
+              # savepath = "public/mp3/"+mfile.id.to_s+"/"+mfile.name+".mp3"
+              # File.open(savepath, "wb") do |saved_file|
+              #   open(URI::encode(mfile.url), 'rb') do |read_file|
+              #     saved_file.write(read_file.read)
+              #   end
+              # end
+              # mfile = Mfile.update(mfile.id,:url => savepath)
 
               p mfile
             end
