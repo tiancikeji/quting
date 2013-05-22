@@ -1,34 +1,43 @@
 <%= link_to 'New Medium', new_medium_path %>
-<% @media.each do |medium| %>
-  <div class="row">
-  <p><img src="<%= medium.mtype %>" alt="" /></p>
-  <h3><%= medium.name %></h3>
-  <p><%= medium.author %></p>
-  <p><%= medium.yanbo %></p>
-  <p><%= medium.jishu %></p>
-  <p><%= medium.time %></p>
-  <p><%= medium.category %></p>
-  <p><%= medium.updatetime %></p>
-  <p><%= medium.description %></p>
-  <p><a href="<%= medium.url %>">orginal</a></p>
-  <p>
-  <%= link_to 'Show', medium %>
-  <%= link_to 'Edit', edit_medium_path(medium) %>
-  <%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-</div>
-<div class="row">
-  <% medium.mfiles.each do |mfile| %>
-    <p>
-      <%= raw mfile.name %>
-      <%= mfile.time %>
-      <%= mfile.url %>
-      <%= link_to 'Show', mfile %>
-      <%= link_to 'Edit', edit_mfile_path(mfile) %>
-      <%= link_to 'Destroy', mfile, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </p>
-  <% end %>
-</div>
+<table class="table">
+  <% @media.each do |medium| %>
+    <tr>
+    <td>
+      <img src="<%= medium.mtype %>" alt="" />
+    </td>
+    <td><%= medium.name %></td>
+    <td><%= medium.author %></td>
+    <td><%= medium.yanbo %></td>
+    <td><%= medium.jishu %></td>
+    <td><%= medium.time %></td>
+    <td><%= medium.category %></td>
+    <td><%= medium.updatetime %></td>
+    <td><%= medium.description %></td>
+    <td><a href="<%= medium.url %>">orginal</a></td>
+    <td>
+      <%= link_to 'Show', medium %>
+      <%= link_to 'Edit', edit_medium_path(medium) %>
+      <%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="11">
+      <table class="table">
+        <% medium.mfiles.each do |mfile| %>
+          <tr>
+          <td><%= raw mfile.name %></td>
+          <td><%= mfile.time %></td>
+          <td><%= mfile.url %></td>
+          <td> <%= link_to 'Show', mfile %>
+          <%= link_to 'Edit', edit_mfile_path(mfile) %>
+            <%= link_to 'Destroy', mfile, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+      </table>
+    </td>
+  </tr>
 <% end %>
+</table>
 <%= paginate @media %>
 
