@@ -2,7 +2,12 @@ class MediaController < ApplicationController
   # GET /media
   # GET /media.json
   def index
-    @media = Medium.page params[:page]
+    if params[:term]
+      @media = Medium.where("name like '%"+params[:term]+"%'").page params[:page]
+    else
+      @media = Medium.page params[:page]
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @media }

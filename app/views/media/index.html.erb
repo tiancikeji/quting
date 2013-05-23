@@ -1,4 +1,7 @@
-<%= link_to 'New Medium', new_medium_path %>
+<form action="/media" method="get" accept-charset="utf-8">
+   <input type="text" name="term" id="" value="" />
+  <input type="submit" value="search" />
+</form>
 <table class="table">
   <% @media.each do |medium| %>
     <tr>
