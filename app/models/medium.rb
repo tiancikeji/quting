@@ -4,4 +4,6 @@ class Medium < ActiveRecord::Base
     :mfiles_attributes
   has_many :mfiles
   accepts_nested_attributes_for :mfiles, :allow_destroy => true
+
+
 end

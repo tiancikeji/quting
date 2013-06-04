@@ -7,7 +7,7 @@ class Api::MediaController < ApplicationController
     else
       @media = Medium.page params[:page]
     end
-    render json: @media
+    render :json => { :media => @media.to_json(:include => :mfiles) }
   end
 
   # GET /media/1
