@@ -7,7 +7,7 @@ class Api::MediaController < ApplicationController
     else
       @media = Medium.page params[:page]
     end
-    render :json => { :count=> @media.count, :media => @media }
+    render :json => { :count=> Medium.all.count, :media => @media }
   end
 
   # GET /media/1
