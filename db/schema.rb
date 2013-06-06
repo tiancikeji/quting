@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506071102) do
+ActiveRecord::Schema.define(:version => 20130606092840) do
+
+  create_table "guests", :force => true do |t|
+    t.string   "device_token"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "likes", :force => true do |t|
+    t.integer  "medium_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "guest_id"
+  end
 
   create_table "media", :force => true do |t|
     t.string   "url"
@@ -62,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130506071102) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "device_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
