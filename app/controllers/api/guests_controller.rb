@@ -36,11 +36,16 @@ class Api::GuestsController < ApplicationController
   # POST /guests
   # POST /guests.json
   def create
-    @guest = Guest.new(params[:guest])
-    if @guest.save
+    @guest = Guest.where(:device_token => params[:guest][:device_token]).first
+    if @guest
        render :json => {:guest => @guest}
     else
-      format.json { render json: @guest.errors, status: :unprocessable_entity }
+       @guest = Guest.new(params[:guest])
+       if @guest.save
+         render :json => {:guest => @guest}
+       else
+         render :json => {:errors => @guest.errors}
+       end
     end
   end
 
