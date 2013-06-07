@@ -3,7 +3,7 @@ class Api::MfilesController < ApplicationController
   # GET /mfiles.json
   def index
     @mfiles = Mfile.where(:medium_id => params[:medium_id])
-    render json: @mfiles
+    render :json => {:mfiles => @mfiles}
   end
 
   # GET /mfiles/1
