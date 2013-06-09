@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Medium:</b>
+  <%= @buy.medium_id %>
+</p>
+
+<p>
+  <b>Guest:</b>
+  <%= @buy.guest_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_buy_path(@buy) %> |
+<%= link_to 'Back', buys_path %>

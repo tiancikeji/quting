@@ -31,9 +31,10 @@ curl -XPOST -d'guest[device_token]=1111' http://localhost:3000/api/guests
 <h4>Like</h4>
 
 <code>
-curl -XGET -d'guest_id=2'  http://localhost:3000/api/likes
 
-{"likes":[{"created_at":"2013-06-06T11:07:48Z","guest_id":2,"id":3,"medium_id":1,"updated_at":"2013-06-06T11:07:48Z","user_id":null},{"created_at":"2013-06-06T11:13:42Z","guest_id":2,"id":4,"medium_id":1,"updated_at":"2013-06-06T11:13:42Z","user_id":null}]}
+curl -XGET -d'guest_id=2' http://localhost:3000/api/likes
+
+{"likes":[{"author":"浙江电子","category":"少儿读物","created_at":"2013-05-21T16:46:04Z","description":"作品简介： 天籁般的童声，首首短小精悍、曲曲沁人心田，把你带回到无限美好的童年时代，徜徉于阳光哺育的孩提时光。带走成长的烦恼、摆脱世俗的扰忧。","id":1,"jishu":"总集数：48","mtype":"http://www.huaxiazi.com/ProductImages/2012331155107.jpg","name":"经典少儿歌曲（一）","time":null,"updated_at":"2013-05-21T16:46:04Z","updatetime":"2012-03-31","url":"http://www.huaxiazi.com/Productinfo.aspx?id=35572","yanbo":"浙江电子音像出版社"}]}
 
  curl -XPOST -d'like[medium_id]=1&like[guest_id]=2' http://localhost:3000/api/likes
 
@@ -43,4 +44,16 @@ curl -XGET -d'guest_id=2'  http://localhost:3000/api/likes
  curl -XDELETE  http://localhost:3000/api/likes/2
 
  {"success":true}
+</code>
+
+<h4> buy</h4>
+<code>
+curl -XPOST -d'buy[guest_id]=2&buy[medium_id]=1' http://localhost:3000/api/buys
+
+{"buy":{"created_at":"2013-06-09T15:08:45Z","guest_id":2,"id":2,"medium_id":1,"updated_at":"2013-06-09T15:08:45Z"}}
+
+
+curl -XGET -d'guest_id=2' http://localhost:3000/api/buys
+
+{"buys":[{"author":"浙江电子","category":"少儿读物","created_at":"2013-05-21T16:46:04Z","description":"作品简介： 天籁般的童声，首首短小精悍、曲曲沁人心田，把你带回到无限美好的童年时代，徜徉于阳光哺育的孩提时光。带走成长的烦恼、摆脱世俗的扰忧。","id":1,"jishu":"总集数：48","mtype":"http://www.huaxiazi.com/ProductImages/2012331155107.jpg","name":"经典少儿歌曲（一）","time":null,"updated_at":"2013-05-21T16:46:04Z","updatetime":"2012-03-31","url":"http://www.huaxiazi.com/Productinfo.aspx?id=35572","yanbo":"浙江电子音像出版社"}]}
 </code>

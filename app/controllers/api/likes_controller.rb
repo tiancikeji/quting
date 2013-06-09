@@ -3,7 +3,11 @@ class Api::LikesController < ApplicationController
   # GET /likes.json
   def index
     @likes = Like.where(:guest_id => params[:guest_id])
-    render :json => {:likes => @likes} 
+    like_ids = []
+    @likes.each do |like|
+      like_ids << like.medium_id
+    end
+    render :json => {:likes => Medium.find_all_by_id(like_ids.uniq)} 
   end
 
   # GET /likes/1
