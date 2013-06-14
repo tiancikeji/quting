@@ -76,4 +76,15 @@ class Api::LikesController < ApplicationController
       render :json => {:success => false}
     end
   end
+
+  def cancel
+    @like = Like.where("guest_id= "+params[:guest_id]+ " and medium_id = "+params[:medium_id]).first
+    if @like
+      @like.destroy
+      render :json => {:success => true}
+    else
+      render :json => {:success => false}
+    end
+  end
+
 end

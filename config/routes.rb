@@ -6,7 +6,11 @@ Quting::Application.routes.draw do
     resources :mfiles
     resources :users
     resources :guests
-    resources :likes
+    resources :likes do
+      collection do
+        get 'cancel'
+      end
+    end
     resources :buys
   end
   resources :buys
