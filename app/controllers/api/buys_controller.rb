@@ -3,11 +3,24 @@ class Api::BuysController < ApplicationController
   # GET /buys.json
   def index
     @buys = Buy.where(:guest_id => params[:guest_id])
+    @likes = Like.where(:guest_id => params[:guest_id])
+    like_array = []
+    @likes.each do |like|
+      like_array << like.medium_id
+    end
     buy_ids = []
     @buys.each do |buy|
       buy_ids << buy.medium_id
     end
-    render :json => {:buys => Medium.find_all_by_id(buy_ids.uniq)} 
+    @medium_buys = Medium.find_all_by_id(buy_ids.uniq)
+    
+    @medium_buys.each do |medium|
+      if like_array.include? medium.id
+        medium.is_like = 1
+      end
+    end
+
+    render :json => {:buys => @medium_buys } 
   end
 
   # GET /buys/1
