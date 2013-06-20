@@ -7,7 +7,11 @@ class Api::LikesController < ApplicationController
     @likes.each do |like|
       like_ids << like.medium_id
     end
-    render :json => {:likes => Medium.find_all_by_id(like_ids.uniq)} 
+    list  = Medium.find_all_by_id(like_ids.uniq)
+    list.each do |m|
+      m.is_like = 1
+    end
+    render :json => {:likes =>list } 
   end
 
   # GET /likes/1
