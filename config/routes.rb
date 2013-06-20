@@ -1,11 +1,15 @@
 Quting::Application.routes.draw do
   
 
+  resources :categories
+
+
   namespace :api do
     resources :media
     resources :mfiles
     resources :users
     resources :guests
+    resources :categories
     resources :likes do
       collection do
         get 'cancel'

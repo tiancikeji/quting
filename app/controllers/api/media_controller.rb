@@ -3,7 +3,7 @@ class Api::MediaController < ApplicationController
   # GET /media.json
   def index
     if params[:term]
-      @media = Medium.where("name like '%"+params[:term]+"%'").page params[:page]
+      @media = Medium.where("name like '%"+params[:term]+"%' or category like '%"+params[:term]+"%' ").page params[:page]
     else
       @media = Medium.page params[:page]
     end
