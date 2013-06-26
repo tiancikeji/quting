@@ -56,6 +56,13 @@ curl -XPOST -d'buy[guest_id]=2&buy[medium_id]=1' http://localhost:3000/api/buys
 curl -XGET -d'guest_id=2' http://localhost:3000/api/buys
 
 {"buys":[{"author":"浙江电子","category":"少儿读物","created_at":"2013-05-21T16:46:04Z","description":"作品简介： 天籁般的童声，首首短小精悍、曲曲沁人心田，把你带回到无限美好的童年时代，徜徉于阳光哺育的孩提时光。带走成长的烦恼、摆脱世俗的扰忧。","id":1,"jishu":"总集数：48","mtype":"http://www.huaxiazi.com/ProductImages/2012331155107.jpg","name":"经典少儿歌曲（一）","time":null,"updated_at":"2013-05-21T16:46:04Z","updatetime":"2012-03-31","url":"http://www.huaxiazi.com/Productinfo.aspx?id=35572","yanbo":"浙江电子音像出版社"}]}
+
+cancel buy 
+
+curl -XDELETE -d'guest_id=1&medium_id=1' http://localhost:3000/api/buys/1
+
+{"success":true}
+
 </code>
 
 

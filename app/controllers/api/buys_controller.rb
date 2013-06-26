@@ -80,12 +80,14 @@ class Api::BuysController < ApplicationController
   # DELETE /buys/1
   # DELETE /buys/1.json
   def destroy
-    @buy = Buy.find(params[:id])
-    @buy.destroy
+    @buy = Buy.where("guest_id= "+params[:guest_id]+ " and medium_id = "+params[:medium_id]).first
 
-    respond_to do |format|
-      format.html { redirect_to buys_url }
-      format.json { head :no_content }
+    if @buy
+      @buy.destroy
+      render :json => {:success => true}
+    else
+      render :json => {:success => false}
     end
+
   end
 end
