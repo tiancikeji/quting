@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
-
+<p>
+  <img src="<%= @medium.mtype %>" alt="" />
+</p>
 <p>
   <b>Name:</b>
   <%= @medium.name %>
@@ -34,6 +36,18 @@
   <%= @medium.mtype %>
 </p>
 
-
+      <table class="table">
+        <% @medium.mfiles.each do |mfile| %>
+          <tr>
+          <td><%= raw mfile.name %></td>
+          <td><%= mfile.time %></td>
+          <td><%= mfile.url %></td>
+          <td> <%= link_to 'Show', mfile %>
+          <%= link_to 'Edit', edit_mfile_path(mfile) %>
+            <%= link_to 'Destroy', mfile, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+      </table>
 <%= link_to 'Edit', edit_medium_path(@medium) %> |
 <%= link_to 'Back', media_path %>

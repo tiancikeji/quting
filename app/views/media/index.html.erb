@@ -16,6 +16,7 @@
     <td><%= medium.category %></td>
     <td><%= medium.updatetime %></td>
     <td><%= medium.description %></td>
+    <td>mp3 count:<%= medium.mfiles.count %></td>
     <td><a href="<%= medium.url %>">orginal</a></td>
     <td>
       <%= link_to 'Show', medium %>
@@ -23,23 +24,7 @@
       <%= link_to 'Destroy', medium, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
   </tr>
-  <tr>
-    <td colspan="11">
-      <table class="table">
-        <% medium.mfiles.each do |mfile| %>
-          <tr>
-          <td><%= raw mfile.name %></td>
-          <td><%= mfile.time %></td>
-          <td><%= mfile.url %></td>
-          <td> <%= link_to 'Show', mfile %>
-          <%= link_to 'Edit', edit_mfile_path(mfile) %>
-            <%= link_to 'Destroy', mfile, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-        </tr>
-      <% end %>
-      </table>
-    </td>
-  </tr>
+
 <% end %>
 </table>
 <%= paginate @media %>
