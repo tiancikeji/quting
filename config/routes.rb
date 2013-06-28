@@ -1,6 +1,9 @@
 Quting::Application.routes.draw do
   
 
+  resources :tags
+
+
   resources :categories
 
 
