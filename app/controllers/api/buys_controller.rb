@@ -81,7 +81,7 @@ class Api::BuysController < ApplicationController
   # DELETE /buys/1.json
   def destroy
     @buy = Buy.where("guest_id= "+params[:guest_id]+ " and medium_id = "+params[:medium_id]).first
-
+    @like = Like.where("guest_id= "+params[:guest_id]+ " and medium_id = "+params[:medium_id]).first
     if @buy
       @buy.destroy
       render :json => {:success => true}

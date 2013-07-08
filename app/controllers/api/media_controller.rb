@@ -9,13 +9,22 @@ class Api::MediaController < ApplicationController
     end
     if params[:guest_id]
       @likes = Like.where(:guest_id => params[:guest_id])
+      # @buys = Buy.where(:guest_id => params[:guest_id])
+      
       like_ids = []
       @likes.each do |like|
         like_ids << like.medium_id
       end
+
+      # buy_ids = []
+      # @buys.each do |buy|
+      #   buy_ids << buy.medium_id
+      # end
+
       @media.each do |m|
         m.is_like = 1
       end
+
     end
     render :json => { :count=> Medium.all.count, :media => @media }
   end
