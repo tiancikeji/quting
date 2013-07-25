@@ -42,6 +42,7 @@ class Api::GuestsController < ApplicationController
     else
        @guest = Guest.new(params[:guest])
        if @guest.save
+         Like.create(:guest_id=>@guest.id,:medium_id=>247)
          render :json => {:guest => @guest}
        else
          render :json => {:errors => @guest.errors}
