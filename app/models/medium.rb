@@ -4,7 +4,7 @@ class Medium < ActiveRecord::Base
     :mfiles_attributes, :is_like
 
   has_many :mfiles
-
+  mount_uploader :mtype, PictureUploader
   accepts_nested_attributes_for :mfiles, :allow_destroy => true
 
   

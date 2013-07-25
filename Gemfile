@@ -24,3 +24,4 @@ gem "thin"
 gem "kaminari"
 gem "httparty"
 gem "nokogiri"
+gem 'carrierwave'
