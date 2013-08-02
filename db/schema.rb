@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130628035937) do
+ActiveRecord::Schema.define(:version => 20130802142245) do
 
   create_table "buys", :force => true do |t|
     t.integer  "medium_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130628035937) do
     t.string   "updatetime"
     t.string   "description"
     t.integer  "is_like",     :default => 0
+    t.integer  "sort"
   end
 
   create_table "mfiles", :force => true do |t|
